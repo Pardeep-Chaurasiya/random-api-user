@@ -15,6 +15,7 @@ male.addEventListener("click",async ()=>{
                 <tr>
                     <td>${data.results[i].name.first}</td>
                     <td>${data.results[i].gender}</td>
+                    <td> <img src=' ${data.results[i].picture.thumbnail}'/></td>
                     <td>${data.results[i].phone}</td>
                     <td>${data.results[i].email}</td>
                 </tr>
@@ -36,6 +37,7 @@ female.addEventListener("click",async ()=>{
                 <tr>
                     <td>${data.results[i].name.first}</td>
                     <td>${data.results[i].gender}</td>
+                    <td> <img src=' ${data.results[i].picture.thumbnail}'/></td>
                     <td>${data.results[i].phone}</td>
                     <td>${data.results[i].email}</td>
                 </tr>
@@ -45,6 +47,8 @@ female.addEventListener("click",async ()=>{
     .catch(err => console.log(err))
     tbody.innerHTML = display;
 })
+
+// random.addEventListener("click",generatedUser("https://randomuser.me/api/?results=50"))
 
 random.addEventListener("click",async ()=>{
     let display ="";
@@ -57,6 +61,7 @@ random.addEventListener("click",async ()=>{
                 <tr>
                     <td>${data.results[i].name.first}</td>
                     <td>${data.results[i].gender}</td>
+                    <td> <img src=' ${data.results[i].picture.thumbnail}'/></td>
                     <td>${data.results[i].phone}</td>
                     <td>${data.results[i].email}</td>
                 </tr>
@@ -91,3 +96,4 @@ random.addEventListener("click",async ()=>{
 //     .catch(err => console.log(err))
 //     tbody.innerHTML = display;
 // }
+
