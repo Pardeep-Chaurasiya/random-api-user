@@ -1,6 +1,6 @@
 let male = document.getElementById("male")
 let female = document.getElementById("female")
-let random = document.getElementById("random")
+let randomUser = document.getElementById("randomUser")
 let tbody = document.querySelector("#tbody")
 
 male.addEventListener("click",async ()=>{
@@ -48,37 +48,11 @@ female.addEventListener("click",async ()=>{
     tbody.innerHTML = display;
 })
 
-// random.addEventListener("click",generatedUser("https://randomuser.me/api/?results=50"))
-
-random.addEventListener("click",async ()=>{
-    let display ="";
-    await fetch("https://randomuser.me/api/?results=50")
-    .then(res=> res.json())
-    .then(data => {
-        for(i=0;i<data.results.length;i++){        
-        display+=`
-            <tbody>
-                <tr>
-                    <td>${data.results[i].name.first}</td>
-                    <td>${data.results[i].gender}</td>
-                    <td> <img src=' ${data.results[i].picture.thumbnail}'/></td>
-                    <td>${data.results[i].phone}</td>
-                    <td>${data.results[i].email}</td>
-                </tr>
-            </tbody>`
-        }
-    })
-    .catch(err => console.log(err))
-    tbody.innerHTML = display;
-})
 
 
-
-
-// async function generatedUser(url){
+// random.addEventListener("click",async ()=>{
 //     let display ="";
-//     await fetch(url)
-//     console.log(url)
+//     await fetch("https://randomuser.me/api/?results=50")
 //     .then(res=> res.json())
 //     .then(data => {
 //         for(i=0;i<data.results.length;i++){        
@@ -87,6 +61,7 @@ random.addEventListener("click",async ()=>{
 //                 <tr>
 //                     <td>${data.results[i].name.first}</td>
 //                     <td>${data.results[i].gender}</td>
+//                     <td> <img src=' ${data.results[i].picture.thumbnail}'/></td>
 //                     <td>${data.results[i].phone}</td>
 //                     <td>${data.results[i].email}</td>
 //                 </tr>
@@ -95,5 +70,34 @@ random.addEventListener("click",async ()=>{
 //     })
 //     .catch(err => console.log(err))
 //     tbody.innerHTML = display;
-// }
+// })
+
+
+
+randomUser.addEventListener("click",() => {
+generatedUser("https://randomuser.me/api/?results=50")
+})
+
+async function generatedUser(url){
+    let display ="";
+    await fetch(url)
+    console.log(url)
+    console.log("first")
+    .then(res=> res.json())
+    .then(data => {
+        for(i=0;i<data.results.length;i++){        
+        display+=`
+            <tbody>
+                <tr>
+                    <td>${data.results[i].name.first}</td>
+                    <td>${data.results[i].gender}</td>
+                    <td>${data.results[i].phone}</td>
+                    <td>${data.results[i].email}</td>
+                </tr>
+            </tbody>`
+        }
+    })
+    .catch(err => console.log(err))
+    tbody.innerHTML = display;
+}
 
